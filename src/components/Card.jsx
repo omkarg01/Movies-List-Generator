@@ -1,17 +1,22 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import Card from "react-bootstrap/Card";
 
-function MovieCard() {
+function MovieCard({ movie }) {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+    <Card style={{ width: "18rem" }}>
+      <Card.Img variant="top" src={movie?.Poster} />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+        <Card.Title style={{ color: "black" }}>
+          {movie?.Title}{" "}
+          <span style={{ fontSize: "13px" }}>
+            ({movie?.Year})
+          </span>
+        </Card.Title>
+        <Card.Text style={{ color: "black", fontSize: "15px" }}>
+          {movie?.BoxOffice}
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Card.Text style={{ color: "black", fontSize: "12px" }}>
+          {movie?.Plot.slice(0, 100)}...
+        </Card.Text>
       </Card.Body>
     </Card>
   );
