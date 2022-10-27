@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import MovieCard from './components/Card';
 import { Button } from 'react-bootstrap';
@@ -16,10 +15,10 @@ function App() {
 
   const fetch = async () => {
     let movieData = [];
-    
+
     for (let i = 0; i < 3; i++) {
       const movie = moviesList[randomNumber()];
-      const response = await axios.get(`http://www.omdbapi.com/?t=${movie}&apikey=2f6435d9`);
+      const response = await axios.get(`http://www.omdbapi.com/?t=${movie}&apikey=${process.env.REACT_APP_API_KEY}`);
       movieData.push(response.data)
     }
 
@@ -36,9 +35,9 @@ function App() {
       <h1>Movies List</h1>
       <h4>Generate random movies</h4>
       <header className="App-header">
-        <MovieCard movie = {movieDetails[0]}/>
-        <MovieCard movie = {movieDetails[1]}/>
-        <MovieCard movie = {movieDetails[2]}/>
+        <MovieCard movie={movieDetails[0]} />
+        <MovieCard movie={movieDetails[1]} />
+        <MovieCard movie={movieDetails[2]} />
       </header>
       <Button variant="success" style={{ marginBlockStart: "80px" }} onClick={fetch}>Generate</Button>
     </div >
